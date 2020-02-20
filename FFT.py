@@ -48,15 +48,11 @@ class FFT():
         # calculate 1/3 octave frequency ranges. Based on wikipedia
         arr = []
         for i in range(-18, 14):
-            # print(i)
             fcentre = 1000 * (2.0 ** (float(i) / 3))
             fd = 2.0 ** (1.0 / 6)
             fupper = fcentre * fd
             flower = fcentre / fd
-            # print(fcentre)
-            # print("%s, %s" %(freqToIndex(flower),freqToIndex(fupper)))
             arr.append([self.freqToIndex(flower), self.freqToIndex(fupper)])
-        # print((arr))
         return arr
 
     def set_options(self, options):
