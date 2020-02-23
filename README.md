@@ -17,4 +17,4 @@ A text-based curses UI is provided through TUI.py. This allows live adjustment o
 # Requirements
     numpy==any
     pyalsaaudio==0.8.4
-    rpi-ws291x==1.0.0
+    rpi-ws281x==1.0.0
