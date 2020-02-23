@@ -29,18 +29,19 @@ class TUI():
         else:
             self.FFT_obj = None
             self.threshhold = 300000
-        self.menu = ["Mode", "Threshold", "Brightness"]
+        self.menu = ["Mode", "Threshold", "Brightness", "Speed (ms-1)"]
         self.options = [["Low Frequency", "Absolute Volume"], [str(self.threshhold)],
-                        ["0%" ,"20%","40%", "60%", "80%", "100%"]]
+                        ["0%" ,"20%","40%", "60%", "80%", "100%"], ["2", "3", "4", "5"]]
         self.menu_index = 0
-        self.options_index = [0, 0, 5]
+        self.options_index = [0, 0, 5, 0]
 
 
     def main_loop(self):
         try:
             while True:
+                # apply selected options to FFT_obj
                 if self.FFT_obj:
-                    self.FFT_obj.set_options({"mode": self.options_index[0], "threshhold":int(self.threshhold), "brightness":self.options_index[2]*0.2})
+                    self.FFT_obj.set_options({"mode": self.options_index[0], "threshhold":int(self.threshhold), "brightness":self.options_index[2]*0.2, "speed":self.options_index[3]+2})
                 stdscr.addstr(0, 0, str("LED Configuation"))
                 h,w = stdscr.getmaxyx()
 
@@ -86,6 +87,7 @@ class TUI():
                             self.options_index[self.menu_index] -=1
                             #no wrapping here either
                 else:
+                    # We're changing the threshhold here
                     if key == curses.KEY_UP:
                         self.threshhold*=2.0
                         self.options[1] = [str(self.threshhold)]

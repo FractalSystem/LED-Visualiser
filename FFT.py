@@ -19,6 +19,7 @@ class FFT():
         self.threshhold = 300000
         self.brightness = 1
         self.sensitive_bands = 5
+        self.leds = None
 
     def freqToIndex(self,freq):
         chunk = self.CHUNK
@@ -56,10 +57,12 @@ class FFT():
         return arr
 
     def set_options(self, options):
-        # options: {"mode": 0/1, "threshhold": float, "brightness":float}
+        print("setting options")
+        # options: {"mode": 0/1, "threshhold": float, "brightness":float, "speed":int}
         mode = options.get("mode")
         threshhold = options.get("threshhold")
         brightness = options.get("brightness")
+        speed = options.get("speed")
         if mode == 0:
             # low freq mode
             self.sensitive_bands = 5
@@ -68,6 +71,11 @@ class FFT():
             self.sensitive_bands = 23
         self.brightness = brightness
         self.threshhold = threshhold
+        self.speed = speed
+        print("speed", str(speed))
+        if self.leds is not None:
+            self.leds.set_speed(speed)
+
 
     def get_threshhold(self):
         return self.threshhold
