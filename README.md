@@ -15,6 +15,6 @@ A text-based curses UI is provided through TUI.py. This allows live adjustment o
     Absolute volume: FFT will take all frequency bands into account when triggering the LEDs.
     
 # Requirements
-    numpy
-    alsaaudio
-    neopixel
+    numpy==any
+    pyalsaaudio==0.8.4
+    rpi-ws291x==1.0.0
