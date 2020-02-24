@@ -1,0 +1,14 @@
+[Unit]
+Description=LED FFT Service
+
+[Service]
+ExecStart=/usr/bin/lxterminal --command="/bin/bash -c 'sudo python /home/pi/TUI.py'"
+Environment=DISPLAY=:0
+Environment=XAUTHORITY=/home/pi/.Xauthority
+Restart=always
+RestartSec=10s
+KillMode=process
+TimeoutSec=infinity
+
+[Install]
+WantedBy=graphical.target
