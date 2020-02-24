@@ -9,7 +9,7 @@ PWM pin, which disables the on-board audio of the Raspberry Pi.
 
 A text-based curses UI is provided through TUI.py. This allows live adjustment of the triggering threshhold, brightness, mode and speed.
 
-Automatic startup on Raspbian can be achieved by setting up TUI.py to run as a systemd service as follows:
+Automatic startup on Raspbian can be achieved by setting up TUI.py to run as a systemd service as follows (provided TUI.py is in /home/pi/):
 
     sudo mv tui.service /lib/systemd/system/
     sudo systemctl daemon-reload
